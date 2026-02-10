@@ -1,8 +1,9 @@
 import { ThemeToggle } from "../components/ThemeToggle";
-import {} from "@/components/StarBackground";
+import { StarBackground } from "../components/StarBackground";
+
 
 export const Home = () => {
-    return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    return <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
 
         {/* Theme Toggle */}
         <ThemeToggle/>
