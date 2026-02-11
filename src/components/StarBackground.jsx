@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 export const StarBackground = () => {
   const [stars, setStars] = useState([]);
 
-
   const generateStars = () => {
     const numberOfStars = Math.floor(
       (window.innerWidth * window.innerHeight) / 1000
@@ -24,24 +23,16 @@ export const StarBackground = () => {
     setStars(newStars);
   };
 
-  
-  };
-
   useEffect(() => {
     generateStars();
 
-    const handleReize = () => {
-        generateStars();
-    };
+    const handleResize = () => generateStars();
+    window.addEventListener("resize", handleResize);
 
-    window.addEventListener('resize', handleResize)
-    
-    return() => window.removeEventListener("resize")
-}, []);
-  
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-
-
+  return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {stars.map((star) => (
         <div
@@ -57,8 +48,6 @@ export const StarBackground = () => {
           }}
         />
       ))}
-
-      
     </div>
-
-
+  );
+};
